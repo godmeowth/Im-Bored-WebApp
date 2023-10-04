@@ -12,8 +12,13 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     <li  className={styles.listItem}>
-                        <NavLink to="/game" className={styles.link} activeClassName={styles.activeLink}>
+                        <NavLink to="/tictac" className={styles.link} activeClassName={styles.activeLink}>
                             Play Tic Tac Toe
+                        </NavLink>
+                    </li>
+                    <li  className={styles.listItem}>
+                        <NavLink to="/snake" className={styles.link} activeClassName={styles.activeLink}>
+                            Play Snake
                         </NavLink>
                     </li>
                 </ul>

@@ -4,6 +4,7 @@ import TicTacToeGame from './components/TicTac/TicTacToe';
 import Home from '././components/Home/Home';
 import styles from './App.module.css';
 import Navbar from "./components/Navbar/Navbar";
+import Snake from "./components/Snake/Snake";
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
           <div className={styles.gameContainer}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/game" element={<TicTacToeGame />} />
+              <Route path="/tictac" element={<TicTacToeGame />} />
+                <Route path="/snake" element={<Snake />} />
             </Routes>
           </div>
         </div>
