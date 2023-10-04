@@ -5,6 +5,8 @@ const SnakeGame = () => {
     const [snake, setSnake] = useState([[0, 0]]);
     const [food, setFood] = useState([Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)]);
     const [dir, setDir] = useState('RIGHT');
+    const [isGameActive, setIsGameActive] = useState(false);
+
 
     const moveSnake = useCallback(() => {
         let newSnake = [...snake];
@@ -38,10 +40,14 @@ const SnakeGame = () => {
         setSnake(newSnake);
     }, [dir, snake, food]);
 
+
     useEffect(() => {
-        const interval = setInterval(moveSnake, 200);
+        let interval;
+        if (isGameActive) {
+            interval = setInterval(moveSnake, 200);
+        }
         return () => clearInterval(interval);
-    }, [moveSnake]);
+    }, [moveSnake, isGameActive]);
 
     const handleKeyPress = (e) => {
         switch (e.key) {
@@ -61,6 +67,13 @@ const SnakeGame = () => {
                 break;
         }
     };
+    const handleStartGame = () => {
+        // Reset snake and food positions
+        setSnake([[0, 0]]);
+        setFood([Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)]);
+        // Start the game
+        setIsGameActive(true);
+    };
 
     return (
         <div className={classes.snakeGame} tabIndex="0" onKeyDown={handleKeyPress}>
@@ -78,7 +91,7 @@ const SnakeGame = () => {
                     </div>
                 ))}
             </div>
-            test text
+            {!isGameActive && <button onClick={handleStartGame}>Start Game</button>}
         </div>
     );
 };
