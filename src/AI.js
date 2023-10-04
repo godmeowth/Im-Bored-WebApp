@@ -5,9 +5,7 @@ const getRandomMove = (board) => {
         }
         return acc;
     }, []);
-
     const randomIndex = Math.floor(Math.random() * emptySquares.length);
     return emptySquares[randomIndex];
 };
-
 export default getRandomMove;
